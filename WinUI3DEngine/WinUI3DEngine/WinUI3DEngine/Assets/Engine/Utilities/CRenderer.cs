@@ -60,12 +60,15 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
                 m_DeviceContext = m_Device.ImmediateContext2;
             }
 
+            // Retrive the DXGI device associated to the Direct3D device.
             using (var dxgiDevice3 = m_Device.QueryInterface<DXGI.Device3>())
-            using (var dxgiFactory3 = dxgiDevice3.Adapter.GetParent<DXGI.Factory3>())
-            {
-                var swapChain1 = new DXGI.SwapChain1(dxgiFactory3, m_Device, ref swapChainDescription);
-                m_SwapChain = swapChain1.QueryInterface<DXGI.SwapChain2>();
-            }
+                // Get the DXGI factory automatically created when initializing the Direct3D device.
+                using (var dxgiFactory3 = dxgiDevice3.Adapter.GetParent<DXGI.Factory3>())
+                    // Create the swap chain and get the highest version available.
+                    using (var swapChain1 = new DXGI.SwapChain1(dxgiFactory3, m_Device, ref swapChainDescription))
+                        m_SwapChain = swapChain1.QueryInterface<DXGI.SwapChain2>();
+
+            // Obtain a reference to the native COM object of the SwapChainPanel.
             using (var nativeObject = ComObject.As<DXGI.ISwapChainPanelNative>(m_SwapChainPanel))
                 nativeObject.SwapChain = m_SwapChain;
             #endregion
