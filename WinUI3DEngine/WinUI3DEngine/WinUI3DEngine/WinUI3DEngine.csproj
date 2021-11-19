@@ -8,6 +8,7 @@
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\Controls\CHierarachy.cs" />
@@ -15,9 +16,29 @@
     <Content Remove="Assets\Controls\CPlayer.cs" />
     <Content Remove="Assets\Controls\CProperties.cs" />
     <Content Remove="Assets\Controls\CTreeView.cs" />
+    <Content Remove="Assets\Engine\Data\CConstantBuffer.cs" />
+    <Content Remove="Assets\Engine\Data\CMeshInfo.cs" />
+    <Content Remove="Assets\Engine\Data\CVertex.cs" />
+    <Content Remove="Assets\Engine\CEngine.cs" />
+    <Content Remove="Assets\Engine\Components\CCamera.cs" />
+    <Content Remove="Assets\Engine\Components\CMaterial.cs" />
+    <Content Remove="Assets\Engine\Components\CMesh.cs" />
+    <Content Remove="Assets\Engine\Components\CTransform.cs" />
+    <Content Remove="Assets\Engine\Editor\CController.cs" />
+    <Content Remove="Assets\Engine\Editor\CImGui.cs" />
+    <Content Remove="Assets\Engine\Helper\CImgLoader.cs" />
+    <Content Remove="Assets\Engine\Helper\CObjLoader.cs" />
+    <Content Remove="Assets\Engine\Utilities\CCameraController.cs" />
+    <Content Remove="Assets\Engine\Utilities\CInput.cs" />
+    <Content Remove="Assets\Engine\Utilities\CObject.cs" />
+    <Content Remove="Assets\Engine\Utilities\CObjectManager.cs" />
+    <Content Remove="Assets\Engine\Utilities\CRenderer.cs" />
+    <Content Remove="Assets\Engine\Utilities\CScene.cs" />
+    <Content Remove="Assets\Engine\Utilities\CTime.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AssimpNet" Version="5.0.0-beta1" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
     <PackageReference Include="ImGui.NET" Version="1.78.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
@@ -29,5 +50,9 @@
     <PackageReference Include="SharpDX.DXGI" Version="4.2.0" />
     <PackageReference Include="SharpDX.Mathematics" Version="4.2.0" />
     <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Engine\Resources\" />
   </ItemGroup>
 </Project>
