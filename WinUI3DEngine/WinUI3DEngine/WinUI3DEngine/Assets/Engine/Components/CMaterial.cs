@@ -38,20 +38,20 @@ namespace WinUI3DEngine.Assets.Engine.Components
             CompilationResult vsResult;
             using (vsResult = ShaderBytecode.CompileFromFile(_shaderFileName, "VS", "vs_4_0", ShaderFlags.None))
             {
-                m_vertexShader = new D3D11.VertexShader(m_d3d.m_device, vsResult.Bytecode.Data);
-                m_inputLayout = new D3D11.InputLayout(m_d3d.m_device, vsResult.Bytecode, inputElements);
+                m_vertexShader = new D3D11.VertexShader(m_d3d.m_Device, vsResult.Bytecode.Data);
+                m_inputLayout = new D3D11.InputLayout(m_d3d.m_Device, vsResult.Bytecode, inputElements);
             }
             #endregion
 
             #region //Create PixelShader 
             using (var psResult = ShaderBytecode.CompileFromFile(_shaderFileName, "PS", "ps_4_0", ShaderFlags.None))
-                m_pixelShader = new D3D11.PixelShader(m_d3d.m_device, psResult.Bytecode.Data);
+                m_pixelShader = new D3D11.PixelShader(m_d3d.m_Device, psResult.Bytecode.Data);
             #endregion
 
             #region //Create GeometryShader
             if (_includeGeometryShader)
                 using (var psResult = ShaderBytecode.CompileFromFile(_shaderFileName, "GS", "gs_4_0", ShaderFlags.None))
-                    m_geometryShader = new D3D11.GeometryShader(m_d3d.m_device, psResult.Bytecode.Data);
+                    m_geometryShader = new D3D11.GeometryShader(m_d3d.m_Device, psResult.Bytecode.Data);
             #endregion
 
             #region //Create ConstantBuffers for Model
@@ -64,12 +64,12 @@ namespace WinUI3DEngine.Assets.Engine.Components
                 Usage = D3D11.ResourceUsage.Dynamic,
             };
 
-            m_model = D3D11.Buffer.Create(m_d3d.m_device, D3D11.BindFlags.ConstantBuffer, ref cbModel);
+            m_model = D3D11.Buffer.Create(m_d3d.m_Device, D3D11.BindFlags.ConstantBuffer, ref cbModel);
             #endregion
 
             #region //Create Texture and Sampler
-            var texture = CImgLoader.CreateTexture2DFromBitmap(m_d3d.m_device, CImgLoader.LoadBitmap(new SharpDX.WIC.ImagingFactory2(), _imageFileName));
-            m_resourceView = new D3D11.ShaderResourceView(m_d3d.m_device, texture);
+            var texture = CImgLoader.CreateTexture2DFromBitmap(m_d3d.m_Device, CImgLoader.LoadBitmap(new SharpDX.WIC.ImagingFactory2(), _imageFileName));
+            m_resourceView = new D3D11.ShaderResourceView(m_d3d.m_Device, texture);
 
             D3D11.SamplerStateDescription samplerStateDescription = new D3D11.SamplerStateDescription
             {
@@ -83,22 +83,22 @@ namespace WinUI3DEngine.Assets.Engine.Components
                 MaximumLod = float.MaxValue,
             };
 
-            m_sampler = new D3D11.SamplerState(m_d3d.m_device, samplerStateDescription);
+            m_sampler = new D3D11.SamplerState(m_d3d.m_Device, samplerStateDescription);
             #endregion
         }
 
         internal void Render(SPerModelConstantBuffer _data)
         {
-            m_d3d.m_deviceContext.InputAssembler.InputLayout = m_inputLayout;
-            m_d3d.m_deviceContext.VertexShader.Set(m_vertexShader);
-            m_d3d.m_deviceContext.PixelShader.Set(m_pixelShader);
-            m_d3d.m_deviceContext.GeometryShader.Set(m_geometryShader);
+            m_d3d.m_DeviceContext.InputAssembler.InputLayout = m_inputLayout;
+            m_d3d.m_DeviceContext.VertexShader.Set(m_vertexShader);
+            m_d3d.m_DeviceContext.PixelShader.Set(m_pixelShader);
+            m_d3d.m_DeviceContext.GeometryShader.Set(m_geometryShader);
 
-            m_d3d.m_deviceContext.UpdateSubresource(ref _data, m_model);
-            m_d3d.m_deviceContext.VertexShader.SetConstantBuffer(1, m_model);
+            m_d3d.m_DeviceContext.UpdateSubresource(ref _data, m_model);
+            m_d3d.m_DeviceContext.VertexShader.SetConstantBuffer(1, m_model);
 
-            m_d3d.m_deviceContext.PixelShader.SetShaderResource(0, m_resourceView);
-            m_d3d.m_deviceContext.PixelShader.SetSampler(0, m_sampler);
+            m_d3d.m_DeviceContext.PixelShader.SetShaderResource(0, m_resourceView);
+            m_d3d.m_DeviceContext.PixelShader.SetSampler(0, m_sampler);
         }
     }
 }

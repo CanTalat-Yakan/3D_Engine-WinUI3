@@ -21,21 +21,21 @@ namespace WinUI3DEngine.Assets.Engine.Data
 
     public struct SDirectionalLightConstantBuffer
     {
-        public Vector3 direction;
+        public Vector3 Direction;
         public float pad;
-        public Vector4 diffuse;
-        public Vector4 ambient;
-        public float intensity;
+        public Vector4 Diffuse;
+        public Vector4 Ambient;
+        public float Intensity;
         public Vector3 pad2;
     }
 
     public struct SPointLightConstantBuffer
     {
-        public Vector3 position;
+        public Vector3 Position;
         public float pad;
-        public Vector4 diffuse;
-        public float intensity;
-        public float radius;
+        public Vector4 Diffuse;
+        public float Intensity;
+        public float Radius;
         public Vector2 pad2;
     }
 }

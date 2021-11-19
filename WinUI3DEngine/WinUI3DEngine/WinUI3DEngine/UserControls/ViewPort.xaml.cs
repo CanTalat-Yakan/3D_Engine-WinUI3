@@ -40,12 +40,12 @@ namespace WinUI3DEngine.UserControls
         {
             m_Engine = new CEngine(x_SwapChainPanel_ViewPort, m_DebugProfiling);
 
-            PointerPressed += m_Engine.m_input.PointerPressed;
-            PointerWheelChanged += m_Engine.m_input.PointerWheelChanged;
-            PointerReleased += m_Engine.m_input.PointerReleased;
-            PointerMoved += m_Engine.m_input.PointerMoved;
-            Window.Current.CoreWindow.KeyDown += m_Engine.m_input.KeyDown;
-            Window.Current.CoreWindow.KeyUp += m_Engine.m_input.KeyUp;
+            PointerPressed += m_Engine.m_Input.PointerPressed;
+            PointerWheelChanged += m_Engine.m_Input.PointerWheelChanged;
+            PointerReleased += m_Engine.m_Input.PointerReleased;
+            PointerMoved += m_Engine.m_Input.PointerMoved;
+            Window.Current.CoreWindow.KeyDown += m_Engine.m_Input.KeyDown;
+            Window.Current.CoreWindow.KeyUp += m_Engine.m_Input.KeyUp;
             //Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.Control).HasFlag(CoreVirtualKeyStates.Down);
         }
 

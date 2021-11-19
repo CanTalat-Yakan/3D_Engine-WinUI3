@@ -28,7 +28,6 @@
     <Content Remove="Assets\Engine\Editor\CImGui.cs" />
     <Content Remove="Assets\Engine\Helper\CImgLoader.cs" />
     <Content Remove="Assets\Engine\Helper\CObjLoader.cs" />
-    <Content Remove="Assets\Engine\Utilities\CCameraController.cs" />
     <Content Remove="Assets\Engine\Utilities\CInput.cs" />
     <Content Remove="Assets\Engine\Utilities\CObject.cs" />
     <Content Remove="Assets\Engine\Utilities\CObjectManager.cs" />

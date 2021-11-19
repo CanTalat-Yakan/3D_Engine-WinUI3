@@ -30,10 +30,7 @@ namespace WinUI3DEngine
         {
             this.InitializeComponent();
 
-            m_mainControl = new CMain();
-            m_mainControl.m_Content = x_Grid_Main;
-            m_mainControl.m_Status = x_TextBlock_Status_Content;
-            m_mainControl.Initialize();
+            m_mainControl = new CMain(x_Grid_Main, x_TextBlock_Status_Content);
             m_mainControl.m_Player = new CPlayer(x_AppBarToggleButton_Status_Play, x_AppBarToggleButton_Status_Pause, x_AppBarButton_Status_Forward);
         }
 

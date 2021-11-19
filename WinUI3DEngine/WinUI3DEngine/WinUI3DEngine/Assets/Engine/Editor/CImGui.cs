@@ -17,13 +17,14 @@ namespace WinUI3DEngine.Assets.Engine.Editor
             var fonts = ImGui.GetIO().Fonts;
             ImGui.GetIO().Fonts.AddFontDefault();
             var io = ImGui.GetIO();
-            io.DisplaySize = m_d3d.m_swapChainPanel.ActualSize;
+            io.DisplaySize = m_d3d.m_SwapChainPanel.ActualSize;
             io.DisplayFramebufferScale = Vector2.One;
-            io.DeltaTime = (float)CTime.m_watch.Elapsed.TotalSeconds;
+            io.DeltaTime = (float)CTime.m_Watch.Elapsed.TotalSeconds;
             ImGui.StyleColorsDark();
             RecreateFontDeviceTexture();
         }
-        private static void RecreateFontDeviceTexture()
+
+        static void RecreateFontDeviceTexture()
         {
             ImGuiIOPtr io = ImGui.GetIO();
             IntPtr pixels;
@@ -34,7 +35,7 @@ namespace WinUI3DEngine.Assets.Engine.Editor
 
         internal void Draw()
         {
-            ImGui.GetIO().DeltaTime = (float)CTime.m_watch.Elapsed.TotalSeconds;
+            ImGui.GetIO().DeltaTime = (float)CTime.m_Watch.Elapsed.TotalSeconds;
             ImGui.NewFrame();
             ImGui.Begin("Test");
 

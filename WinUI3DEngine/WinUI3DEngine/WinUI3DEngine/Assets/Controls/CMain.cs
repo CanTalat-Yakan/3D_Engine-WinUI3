@@ -1,9 +1,4 @@
 ﻿using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WinUI3DEngine.UserControls;
 
 namespace WinUI3DEngine.Assets.Controls
@@ -17,21 +12,21 @@ namespace WinUI3DEngine.Assets.Controls
         internal Grid m_Content;
         internal TextBlock m_Status;
 
-        public CMain()
+        public CMain(Grid _content, TextBlock _status)
         {
             if (Singleton is null)
                 Singleton = this;
-        }
 
-        internal void Initialize()
-        {
+            m_Content = _content;
+            m_Status = _status;
+
             m_Layout = new CLayout(
                 m_Content,
-                new ViewPort(), 
-                new Hierarchy(), 
-                new Properties(), 
-                new Output(), 
-                new Files(), 
+                new ViewPort(),
+                new Hierarchy(),
+                new Properties(),
+                new Output(),
+                new Files(),
                 new Settings());
 
             m_Layout.Initialize();

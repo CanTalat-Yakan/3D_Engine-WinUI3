@@ -5,31 +5,31 @@ namespace WinUI3DEngine.Assets.Engine.Components
 {
     internal class CTransform
     {
-        internal CTransform m_parent;
+        internal CTransform m_Parent;
 
-        internal SPerModelConstantBuffer m_constantsBuffer { get => new SPerModelConstantBuffer() { ModelView = m_worldMatrix }; }
-        internal Matrix m_worldMatrix = Matrix.Identity;
-        internal Matrix m_normalMatrix = Matrix.Identity;
-        internal Vector3 m_position = Vector3.Zero;
-        internal Vector3 m_rotation = Vector3.Zero;
-        internal Vector3 m_scale = Vector3.One;
+        internal SPerModelConstantBuffer m_ConstantsBuffer { get => new SPerModelConstantBuffer() { ModelView = m_WorldMatrix }; }
+        internal Matrix m_WorldMatrix = Matrix.Identity;
+        internal Matrix m_NormalMatrix = Matrix.Identity;
+        internal Vector3 m_Position = Vector3.Zero;
+        internal Vector3 m_Rotation = Vector3.Zero;
+        internal Vector3 m_Scale = Vector3.One;
 
         internal void Udate()
         {
-            Matrix translation = Matrix.Translation(m_position);
-            Matrix rotation = Matrix.RotationYawPitchRoll(m_rotation.X, m_rotation.Y, m_rotation.Z);
-            Matrix scale = Matrix.Scaling(m_scale);
+            Matrix translation = Matrix.Translation(m_Position);
+            Matrix rotation = Matrix.RotationYawPitchRoll(m_Rotation.X, m_Rotation.Y, m_Rotation.Z);
+            Matrix scale = Matrix.Scaling(m_Scale);
 
-            m_worldMatrix = Matrix.Transpose(scale * rotation * translation);
-            if (m_parent != null) m_worldMatrix = m_worldMatrix * m_parent.m_worldMatrix;
+            m_WorldMatrix = Matrix.Transpose(scale * rotation * translation);
+            if (m_Parent != null) m_WorldMatrix = m_WorldMatrix * m_Parent.m_WorldMatrix;
         }
 
         public override string ToString()
         {
             string s = "";
-            s += m_position.ToString() + "\n";
-            s += m_rotation.ToString() + "\n";
-            s += m_scale.ToString();
+            s += m_Position.ToString() + "\n";
+            s += m_Rotation.ToString() + "\n";
+            s += m_Scale.ToString();
             return s;
         }
     }

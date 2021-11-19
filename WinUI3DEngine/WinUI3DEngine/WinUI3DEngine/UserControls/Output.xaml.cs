@@ -49,12 +49,12 @@ namespace WinUI3DEngine.UserControls
 
         void Tick(object sender, object e)
         {
-            if (CMain.Singleton.m_Player.m_playMode == EPlayMode.PLAYING)
+            if (CMain.Singleton.m_Player.m_PlayMode == EPlayMode.PLAYING)
                 Update();
         }
         void TickSec(object sender, object e)
         {
-            if (CMain.Singleton.m_Player.m_playMode == EPlayMode.PLAYING)
+            if (CMain.Singleton.m_Player.m_PlayMode == EPlayMode.PLAYING)
                 UpdateSec();
         }
 

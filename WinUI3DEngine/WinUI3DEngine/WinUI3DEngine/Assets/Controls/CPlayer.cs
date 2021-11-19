@@ -2,11 +2,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WinUI3DEngine.Assets.Controls
 {
@@ -18,7 +13,7 @@ namespace WinUI3DEngine.Assets.Controls
     }
     internal class CPlayer
     {
-        internal EPlayMode m_playMode;
+        internal EPlayMode m_PlayMode;
 
         AppBarToggleButton m_play;
         AppBarToggleButton m_pause;
@@ -37,7 +32,7 @@ namespace WinUI3DEngine.Assets.Controls
 
         void SetStatusAppBarButtons(bool _b)
         {
-            m_playMode = _b ? EPlayMode.PLAYING : EPlayMode.NONE;
+            m_PlayMode = _b ? EPlayMode.PLAYING : EPlayMode.NONE;
 
             m_pause.IsEnabled = _b;
             m_forward.IsEnabled = _b;
@@ -53,7 +48,7 @@ namespace WinUI3DEngine.Assets.Controls
 
         internal void Play()
         {
-            if (m_playMode == EPlayMode.NONE)
+            if (m_PlayMode == EPlayMode.NONE)
                 if (m_output.m_ClearPlay.IsChecked.Value)
                     m_output.ClearOutput();
 
@@ -66,7 +61,7 @@ namespace WinUI3DEngine.Assets.Controls
         }
         internal void Pause()
         {
-            m_playMode = m_pause.IsChecked.Value ? EPlayMode.PAUSED : EPlayMode.PLAYING;
+            m_PlayMode = m_pause.IsChecked.Value ? EPlayMode.PAUSED : EPlayMode.PLAYING;
 
             CMain.Singleton.m_Layout.m_ViewPort.m_BorderBrush.BorderBrush = new SolidColorBrush(m_pause.IsChecked.Value ? Colors.Orange : Colors.GreenYellow);
 
@@ -74,7 +69,7 @@ namespace WinUI3DEngine.Assets.Controls
         }
         internal void Forward()
         {
-            if (m_playMode != EPlayMode.PAUSED)
+            if (m_PlayMode != EPlayMode.PAUSED)
                 return;
 
             COutput.Log("Stepped Forward..");

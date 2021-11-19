@@ -7,48 +7,48 @@ namespace WinUI3DEngine.Assets.Engine
 {
     internal class CEngine
     {
-        internal CInput m_input;
-        internal CTime m_time;
-        internal CScene m_scene;
-        internal CRenderer m_render;
-        internal CImGui m_gui;
+        internal CInput m_Input;
+        internal CTime m_Time;
+        internal CScene m_Scene;
+        internal CRenderer m_Render;
+        internal CImGui m_Gui;
 
         internal CEngine(SwapChainPanel _swapChainPanel, TextBlock _textBlock)
         {
-            m_render = new CRenderer(_swapChainPanel);
-            m_input = new CInput();
-            m_time = new CTime();
-            m_scene = new CScene();
-            m_gui = new CImGui();
+            m_Render = new CRenderer(_swapChainPanel);
+            m_Input = new CInput();
+            m_Time = new CTime();
+            m_Scene = new CScene();
+            m_Gui = new CImGui();
 
-            m_scene.Awake();
-            m_scene.Start();
+            m_Scene.Awake();
+            m_Scene.Start();
 
             CompositionTarget.Rendering += (s, e) =>
             {
-                m_render.Clear();
+                m_Render.Clear();
 
-                m_input.Update();
+                m_Input.Update();
 
-                m_scene.Update();
-                m_scene.LateUpdate();
+                m_Scene.Update();
+                m_Scene.LateUpdate();
 
-                m_input.LateUpdate();
+                m_Input.LateUpdate();
 
-                m_time.Update();
+                m_Time.Update();
 
-                m_render.SetSolid();
-                m_scene.Render();
-                m_render.SetWireframe();
-                m_scene.Render();
+                m_Render.SetSolid();
+                m_Scene.Render();
+                m_Render.SetWireframe();
+                m_Scene.Render();
 
-                m_gui.Draw();
+                m_Gui.Draw();
 
-                m_render.Present();
+                m_Render.Present();
 
-                _textBlock.Text = m_time.m_profile;
-                _textBlock.Text += "\n\n" + m_render.m_profile;
-                _textBlock.Text += "\n\n" + m_scene.m_profile;
+                _textBlock.Text = m_Time.m_Profile;
+                _textBlock.Text += "\n\n" + m_Render.m_Profile;
+                _textBlock.Text += "\n\n" + m_Scene.m_Profile;
             };
         }
     }

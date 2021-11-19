@@ -23,7 +23,7 @@ namespace WinUI3DEngine.UserControls
 {
     public sealed partial class Properties : UserControl
     {
-        internal event PropertyChangedEventHandler PropertyChanged;
+        internal event PropertyChangedEventHandler m_PropertyChanged;
 
         internal CProperties m_Control;
 
@@ -52,6 +52,6 @@ namespace WinUI3DEngine.UserControls
 
         void AppBarButton_Click_SelectImagePath(object sender, RoutedEventArgs e) { }//m_Control.SelectImage(Img_SelectTexture, x_TextBlock_TexturePath); }
         void AppBarButton_Click_SelectFilePath(object sender, RoutedEventArgs e) { }//m_Control.SelectFile(x_TextBlock_FilePath); }
-        void FirePropertyChanged([CallerMemberName] string memberName = null) { this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName)); }
+        void FirePropertyChanged([CallerMemberName] string memberName = null) { this.m_PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName)); }
     }
 }

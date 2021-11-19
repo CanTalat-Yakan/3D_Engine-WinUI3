@@ -5,17 +5,17 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
 {
     internal class CTime
     {
-        internal string m_profile = "";
+        internal string m_Profile = "";
 
-        internal static double m_time, m_delta;
-        internal static Stopwatch m_watch = new Stopwatch();
+        internal static double m_Time, m_Delta;
+        internal static Stopwatch m_Watch = new Stopwatch();
         int m_fps, m_lastFPS;
         DateTime m_now = DateTime.Now;
 
         internal void Update()
         {
-            m_delta = m_watch.ElapsedMilliseconds * 0.001;
-            m_time += m_delta;
+            m_Delta = m_Watch.ElapsedMilliseconds * 0.001;
+            m_Time += m_Delta;
             ++m_lastFPS;
 
             if (m_now.Second != DateTime.Now.Second)
@@ -24,10 +24,10 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
                 m_lastFPS = 0;
                 m_now = DateTime.Now;
 
-                m_profile = m_watch.ElapsedMilliseconds.ToString() + " ms" + "\n" + m_fps.ToString() + " FPS";
+                m_Profile = m_Watch.ElapsedMilliseconds.ToString() + " ms" + "\n" + m_fps.ToString() + " FPS";
             }
 
-            m_watch.Restart();
+            m_Watch.Restart();
         }
     }
 }

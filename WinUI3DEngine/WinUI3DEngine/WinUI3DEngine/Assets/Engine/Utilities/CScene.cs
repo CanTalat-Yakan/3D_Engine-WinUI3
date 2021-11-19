@@ -9,66 +9,66 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
 {
     internal class CScene
     {
-        public string m_profile;
+        internal string m_Profile;
 
-        internal CCamera m_camera = new CCamera();
-        internal CController m_cameraController;
-        internal Engine_ObjectManager m_objectManager = new Engine_ObjectManager();
+        internal CCamera m_Camera = new CCamera();
+        internal CController m_CameraController;
+        internal CObjectManager m_ObjectManager = new CObjectManager();
 
         internal void Awake()
         {
-            m_cameraController = new CCameraController(m_camera);
+            m_CameraController = new CController(m_Camera);
 
-            m_objectManager.CreateSky();
+            m_ObjectManager.CreateSky();
         }
 
-        Engine_Object parent, subParent;
+        CObject subParent;
         internal void Start()
         {
-            parent = m_objectManager.CreateEmpty("Content");
-            subParent = m_objectManager.CreateEmpty("Cubes");
-            subParent.m_parent = parent;
+            CObject parent = m_ObjectManager.CreateEmpty("Content");
+            subParent = m_ObjectManager.CreateEmpty("Cubes");
+            subParent.m_Parent = parent;
 
-            m_objectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_transform.m_position = new Vector3(0, 0, 1);
-            m_objectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_transform.m_position = new Vector3(0, 0, -3);
-            m_objectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_transform.m_position = new Vector3(0, 2.5f, 0);
-            m_objectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_transform.m_position = new Vector3(0, -4, 0);
-            m_objectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_transform.m_position = new Vector3(2, 0, 0);
-            m_objectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_transform.m_position = new Vector3(-1, 1, 0);
-            m_objectManager.CreatePrimitive(EPrimitiveTypes.CUBE, subParent);
+            m_ObjectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_Transform.m_Position = new Vector3(0, 0, 1);
+            m_ObjectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_Transform.m_Position = new Vector3(0, 0, -3);
+            m_ObjectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_Transform.m_Position = new Vector3(0, 2.5f, 0);
+            m_ObjectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_Transform.m_Position = new Vector3(0, -4, 0);
+            m_ObjectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_Transform.m_Position = new Vector3(2, 0, 0);
+            m_ObjectManager.CreatePrimitive(EPrimitiveTypes.SPHERE, parent).m_Transform.m_Position = new Vector3(-1, 1, 0);
+            m_ObjectManager.CreatePrimitive(EPrimitiveTypes.CUBE, subParent);
         }
 
         internal void Update()
         {
-            m_camera.RecreateViewConstants();
-            m_cameraController.Update();
+            m_Camera.RecreateViewConstants();
+            m_CameraController.Update();
 
-            if (CInput.Instance.GetKey(Windows.System.VirtualKey.C, CInput.Input_State.DOWN))
-                m_objectManager.CreatePrimitive(EPrimitiveTypes.CUBE, subParent).m_transform = new CTransform
+            if (CInput.Instance.GetKey(Windows.System.VirtualKey.C, CInput.EInputState.DOWN))
+                m_ObjectManager.CreatePrimitive(EPrimitiveTypes.CUBE, subParent).m_Transform = new CTransform
                 {
-                    m_rotation = new Vector3(new Random().Next(1, 360), new Random().Next(1, 360), new Random().Next(1, 360)),
-                    m_scale = new Vector3(new Random().Next(1, 3), new Random().Next(1, 3), new Random().Next(1, 3))
+                    m_Rotation = new Vector3(new Random().Next(1, 360), new Random().Next(1, 360), new Random().Next(1, 360)),
+                    m_Scale = new Vector3(new Random().Next(1, 3), new Random().Next(1, 3), new Random().Next(1, 3))
                 };
         }
 
         internal void LateUpdate()
         {
-            m_profile = "Objects: " + m_objectManager.m_list.Count().ToString();
+            m_Profile = "Objects: " + m_ObjectManager.m_List.Count().ToString();
 
             int vertexCount = 0;
-            foreach (var item in m_objectManager.m_list)
-                if (item.m_enabled && item.m_mesh != null)
-                    vertexCount += item.m_mesh.m_vertexCount;
-            m_profile += "\n" + "Vertices: " + vertexCount;
+            foreach (var item in m_ObjectManager.m_List)
+                if (item.m_Enabled && item.m_Mesh != null)
+                    vertexCount += item.m_Mesh.m_VertexCount;
+            m_Profile += "\n" + "Vertices: " + vertexCount;
         }
 
         internal void Render()
         {
-            foreach (var item in m_objectManager.m_list)
-                if (item.m_enabled && item.m_mesh != null)
+            foreach (var item in m_ObjectManager.m_List)
+                if (item.m_Enabled && item.m_Mesh != null)
                     item.Update_Render();
 
-            m_objectManager.m_sky.Update_Render();
+            m_ObjectManager.m_Sky.Update_Render();
         }
     }
 }

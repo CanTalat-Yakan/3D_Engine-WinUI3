@@ -6,7 +6,7 @@ namespace WinUI3DEngine.Assets.Engine.Helper
 {
     internal class CImgLoader
     {
-        public static WIC.BitmapSource LoadBitmap(WIC.ImagingFactory2 factory, string filename)
+        internal static WIC.BitmapSource LoadBitmap(WIC.ImagingFactory2 factory, string filename)
         {
             var bitmapDecoder = new WIC.BitmapDecoder(
                 factory,
@@ -26,7 +26,7 @@ namespace WinUI3DEngine.Assets.Engine.Helper
             return formatConverter;
         }
 
-        public static D3D11.Texture2D CreateTexture2DFromBitmap(D3D11.Device device, WIC.BitmapSource bitmapSource)
+        internal static D3D11.Texture2D CreateTexture2DFromBitmap(D3D11.Device device, WIC.BitmapSource bitmapSource)
         {
             // Allocate DataStream to receive the WIC image pixels
             int stride = bitmapSource.Size.Width * 4;

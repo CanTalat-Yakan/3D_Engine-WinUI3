@@ -5,10 +5,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Storage.Streams;
 using Expander = Microsoft.UI.Xaml.Controls.Expander;
 using ExpandDirection = Microsoft.UI.Xaml.Controls.ExpandDirection;
@@ -54,7 +50,6 @@ namespace WinUI3DEngine.Assets.Controls
                 _path.Text = file.Name;
             }
         }
-
 
 
         internal Grid WrapProperty(string _header, params UIElement[] _content)

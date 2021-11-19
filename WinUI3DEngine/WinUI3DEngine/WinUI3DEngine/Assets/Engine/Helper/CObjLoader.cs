@@ -7,17 +7,17 @@ namespace WinUI3DEngine.Assets.Engine.Helper
     {
         internal static CMeshInfo LoadFilePro(string _fileName)
         {
-            var a = new Assimp.AssimpContext();
-            var s = a.ImportFile(_fileName);
+            var con = new Assimp.AssimpContext();
+            var file = con.ImportFile(_fileName);
 
             CMeshInfo obj = new CMeshInfo();
 
-            obj.vertices = new List<CVertex>();
-            obj.indices = new List<ushort>();
-            foreach (var mesh in s.Meshes)
+            obj.Vertices = new List<CVertex>();
+            obj.Indices = new List<ushort>();
+            foreach (var mesh in file.Meshes)
             {
                 for (int i = 0; i < mesh.VertexCount; i++)
-                    obj.vertices.Add(new CVertex(
+                    obj.Vertices.Add(new CVertex(
                     mesh.Vertices[i].X,
                     mesh.Vertices[i].Y,
                     mesh.Vertices[i].Z,
@@ -33,14 +33,14 @@ namespace WinUI3DEngine.Assets.Engine.Helper
                         (ushort)(item.Indices[0]),
                         (ushort)(item.Indices[1]),
                         (ushort)(item.Indices[2])};
-                    obj.indices.AddRange(rangeIndices);
+                    obj.Indices.AddRange(rangeIndices);
                     if (item.IndexCount == 4)
                     {
                         rangeIndices = new ushort[] {
                         (ushort)(item.Indices[0]),
                         (ushort)(item.Indices[2]),
                         (ushort)(item.Indices[3])};
-                        obj.indices.AddRange(rangeIndices);
+                        obj.Indices.AddRange(rangeIndices);
                     }
                 }
             }

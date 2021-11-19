@@ -24,10 +24,10 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
             base.Add(item);
         }
     }
-    internal class Engine_ObjectManager
+    internal class CObjectManager
     {
-        internal MyList<Engine_Object> m_list = new MyList<Engine_Object>();
-        internal Engine_Object m_sky;
+        internal MyList<CObject> m_List = new MyList<CObject>();
+        internal CObject m_Sky;
 
         CMaterial m_materialDefault;
         CMaterial m_materialReflection;
@@ -43,7 +43,7 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
         static readonly string OBJ_CUBE = @"Assets//Engine//Resources//Models//Cube.obj";
         static readonly string OBJ_SPHERE = @"Assets//Engine//Resources//Models//Sphere.obj";
 
-        internal Engine_ObjectManager()
+        internal CObjectManager()
         {
             m_materialDefault = new CMaterial(SHADER_SIMPLELIT, IMAGE_DEFAULT);
             m_materialReflection = new CMaterial(SHADER_LIT, IMAGE_SKY);
@@ -54,40 +54,40 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
         }
 
 
-        internal Engine_Object Duplicate(Engine_Object _refObject)
+        internal CObject Duplicate(CObject _refObject)
         {
-            Engine_Object gObject = _refObject.Clone();
+            CObject gObject = _refObject.Clone();
 
-            m_list.Add(gObject);
+            m_List.Add(gObject);
             return gObject;
         }
 
-        internal Engine_Object CreateEmpty(string _name = "Entity")
+        internal CObject CreateEmpty(string _name = "Entity")
         {
-            Engine_Object gObject = new Engine_Object()
+            CObject gObject = new CObject()
             {
-                m_name = _name,
-                m_material = m_materialDefault,
+                m_Name = _name,
+                m_Material = m_materialDefault,
             };
 
-            m_list.Add(gObject);
+            m_List.Add(gObject);
             return gObject;
         }
 
-        internal Engine_Object CreatePrimitive(EPrimitiveTypes _type)
+        internal CObject CreatePrimitive(EPrimitiveTypes _type)
         {
-            Engine_Object gObject = new Engine_Object();
-            gObject.m_material = m_materialReflection;
+            CObject gObject = new CObject();
+            gObject.m_Material = m_materialReflection;
 
             switch (_type)
             {
                 case EPrimitiveTypes.CUBE:
-                    gObject.m_mesh = m_meshCube;
-                    gObject.m_name = "Cube" + m_list.Count.ToString();
+                    gObject.m_Mesh = m_meshCube;
+                    gObject.m_Name = "Cube" + m_List.Count.ToString();
                     break;
                 case EPrimitiveTypes.SPHERE:
-                    gObject.m_mesh = m_meshSphere;
-                    gObject.m_name = "Sphere" + m_list.Count.ToString();
+                    gObject.m_Mesh = m_meshSphere;
+                    gObject.m_Name = "Sphere" + m_List.Count.ToString();
                     break;
                 case EPrimitiveTypes.PLANE:
                     break;
@@ -99,27 +99,27 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
                     break;
             }
 
-            m_list.Add(gObject);
+            m_List.Add(gObject);
             return gObject;
         }
-        internal Engine_Object CreatePrimitive(EPrimitiveTypes _type, Engine_Object _parent)
+        internal CObject CreatePrimitive(EPrimitiveTypes _type, CObject _parent)
         {
             var gObject = CreatePrimitive(_type);
-            gObject.m_parent = _parent;
+            gObject.m_Parent = _parent;
 
             return gObject;
         }
 
         internal void CreateSky()
         {
-            m_sky = new Engine_Object()
+            m_Sky = new CObject()
             {
-                m_name = "Sky",
-                m_mesh = m_meshSphere,
-                m_material = m_materialSky,
+                m_Name = "Sky",
+                m_Mesh = m_meshSphere,
+                m_Material = m_materialSky,
             };
 
-            m_sky.m_transform.m_scale = new Vector3(-1000, -1000, -1000);
+            m_Sky.m_Transform.m_Scale = new Vector3(-1000, -1000, -1000);
         }
     }
 }

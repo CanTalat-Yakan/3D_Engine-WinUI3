@@ -10,15 +10,15 @@ namespace WinUI3DEngine.Assets.Engine.Components
     {
         CRenderer m_d3d;
 
-        internal static double FOV;
-        internal SViewConstantsBuffer m_viewConstants;
+        internal static double m_FOV;
+        internal SViewConstantsBuffer m_ViewConstants;
         D3D11.Buffer m_view;
 
-        internal CTransform m_transform = new CTransform();
-        internal Vector3 m_front = Vector3.ForwardLH;
-        internal Vector3 m_right = Vector3.Right;
-        internal Vector3 m_up = Vector3.Up;
-        internal Vector3 m_localUp = Vector3.Up;
+        internal CTransform m_Transform = new CTransform();
+        internal Vector3 m_Front = Vector3.ForwardLH;
+        internal Vector3 m_Right = Vector3.Right;
+        internal Vector3 m_Up = Vector3.Up;
+        internal Vector3 m_LocalUp = Vector3.Up;
 
         internal CCamera()
         {
@@ -27,7 +27,7 @@ namespace WinUI3DEngine.Assets.Engine.Components
             #endregion
 
             SViewConstantsBuffer cbView = new SViewConstantsBuffer();
-            m_view = D3D11.Buffer.Create(m_d3d.m_device, D3D11.BindFlags.ConstantBuffer, ref cbView);
+            m_view = D3D11.Buffer.Create(m_d3d.m_Device, D3D11.BindFlags.ConstantBuffer, ref cbView);
 
             RecreateViewConstants();
         }
@@ -35,37 +35,37 @@ namespace WinUI3DEngine.Assets.Engine.Components
         internal void RecreateViewConstants()
         {
             #region //Set Transform
-            m_transform.m_rotation.X %= 360;
-            m_transform.m_rotation.Y = Math.Clamp(m_transform.m_rotation.Y, -89, 89);
+            m_Transform.m_Rotation.X %= 360;
+            m_Transform.m_Rotation.Y = Math.Clamp(m_Transform.m_Rotation.Y, -89, 89);
 
             var front = new Vector3(
-                MathF.Cos(MathUtil.DegreesToRadians(m_transform.m_rotation.X)) * MathF.Cos(MathUtil.DegreesToRadians(m_transform.m_rotation.Y)),
-                MathF.Sin(MathUtil.DegreesToRadians(m_transform.m_rotation.Y)),
-                MathF.Sin(MathUtil.DegreesToRadians(m_transform.m_rotation.X)) * MathF.Cos(MathUtil.DegreesToRadians(m_transform.m_rotation.Y)));
-            m_front = Vector3.Normalize(front);
-            m_right = Vector3.Normalize(Vector3.Cross(m_front, m_up));
-            m_localUp = Vector3.Normalize(Vector3.Cross(m_right, m_front));
+                MathF.Cos(MathUtil.DegreesToRadians(m_Transform.m_Rotation.X)) * MathF.Cos(MathUtil.DegreesToRadians(m_Transform.m_Rotation.Y)),
+                MathF.Sin(MathUtil.DegreesToRadians(m_Transform.m_Rotation.Y)),
+                MathF.Sin(MathUtil.DegreesToRadians(m_Transform.m_Rotation.X)) * MathF.Cos(MathUtil.DegreesToRadians(m_Transform.m_Rotation.Y)));
+            m_Front = Vector3.Normalize(front);
+            m_Right = Vector3.Normalize(Vector3.Cross(m_Front, m_Up));
+            m_LocalUp = Vector3.Normalize(Vector3.Cross(m_Right, m_Front));
             #endregion
 
             #region //Set ViewConstantBuffer
             var view = Matrix.LookAtLH(
-                m_transform.m_position,
-                m_transform.m_position + m_front,
-                m_up);
+                m_Transform.m_Position,
+                m_Transform.m_Position + m_Front,
+                m_Up);
 
-            var aspect = m_d3d.m_swapChainPanel.ActualWidth / m_d3d.m_swapChainPanel.ActualHeight;
+            var aspect = m_d3d.m_SwapChainPanel.ActualWidth / m_d3d.m_SwapChainPanel.ActualHeight;
             var projection = Matrix.PerspectiveFovLH(
                 //MathUtil.DegreesToRadians(2 * (float)Math.Atan(Math.Tan(FOV * 0.5f) * aspect)),
-                MathUtil.DegreesToRadians((float)(FOV / aspect)),
+                MathUtil.DegreesToRadians((float)(m_FOV / aspect)),
                 (float)aspect,
                 0.1f, 1000);
 
             var viewProjection = Matrix.Transpose(view * projection);
-            m_viewConstants = new SViewConstantsBuffer() { ViewProjection = viewProjection, View = view, Projection = projection, WorldCamPos = m_transform.m_position };
+            m_ViewConstants = new SViewConstantsBuffer() { ViewProjection = viewProjection, View = view, Projection = projection, WorldCamPos = m_Transform.m_Position };
             #endregion
 
-            m_d3d.m_deviceContext.UpdateSubresource(ref m_viewConstants, m_view);
-            m_d3d.m_deviceContext.VertexShader.SetConstantBuffer(0, m_view);
+            m_d3d.m_DeviceContext.UpdateSubresource(ref m_ViewConstants, m_view);
+            m_d3d.m_DeviceContext.VertexShader.SetConstantBuffer(0, m_view);
         }
     }
 }

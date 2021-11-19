@@ -10,13 +10,13 @@ namespace WinUI3DEngine.Assets.Engine.Components
     {
         CRenderer m_d3d;
 
-        public D3D11.Buffer m_vertexBuffer;
-        public D3D11.Buffer m_indexBuffer;
+        internal D3D11.Buffer m_VertexBuffer;
+        internal D3D11.Buffer m_IndexBuffer;
 
-        public int m_vertexCount;
-        public int m_vertexStride;
-        public int m_indexCount;
-        public int m_indexStride;
+        internal int m_VertexCount;
+        internal int m_VertexStride;
+        internal int m_IndexCount;
+        internal int m_IndexStride;
 
 
         internal CMesh(CMeshInfo _obj)
@@ -26,24 +26,24 @@ namespace WinUI3DEngine.Assets.Engine.Components
             #endregion
 
             #region //Set Variables
-            m_vertexCount = _obj.vertices.Count();
-            m_vertexStride = SharpDX.Utilities.SizeOf<CVertex>();
+            m_VertexCount = _obj.Vertices.Count();
+            m_VertexStride = SharpDX.Utilities.SizeOf<CVertex>();
 
-            m_indexCount = _obj.indices.Count();
-            m_indexStride = sizeof(int);
+            m_IndexCount = _obj.Indices.Count();
+            m_IndexStride = sizeof(int);
             #endregion
 
             #region //Create VertexBuffer
             unsafe
             {
-                fixed (CVertex* p = _obj.vertices.ToArray()) //Array
+                fixed (CVertex* p = _obj.Vertices.ToArray()) //Array
                 {
                     IntPtr ptr = (IntPtr)p;
-                    m_vertexBuffer = new D3D11.Buffer(
-                      m_d3d.m_device,
+                    m_VertexBuffer = new D3D11.Buffer(
+                      m_d3d.m_Device,
                       ptr,
                       new D3D11.BufferDescription(
-                          m_vertexCount * m_vertexStride, //ByteWidth
+                          m_VertexCount * m_VertexStride, //ByteWidth
                           D3D11.BindFlags.VertexBuffer,
                           D3D11.ResourceUsage.Default));
                 }
@@ -53,14 +53,14 @@ namespace WinUI3DEngine.Assets.Engine.Components
             #region //Create IndexBuffer
             unsafe
             {
-                fixed (ushort* p = _obj.indices.ToArray())
+                fixed (ushort* p = _obj.Indices.ToArray())
                 {
                     IntPtr ptr = (IntPtr)p;
-                    m_indexBuffer = new D3D11.Buffer(
-                      m_d3d.m_device,
+                    m_IndexBuffer = new D3D11.Buffer(
+                      m_d3d.m_Device,
                       ptr,
                       new D3D11.BufferDescription(
-                          m_indexCount * m_indexStride,
+                          m_IndexCount * m_IndexStride,
                           D3D11.BindFlags.IndexBuffer,
                           D3D11.ResourceUsage.Default));
                 }
@@ -71,8 +71,8 @@ namespace WinUI3DEngine.Assets.Engine.Components
         internal void Render()
         {
             m_d3d.RenderMesh(
-                m_vertexBuffer, m_vertexStride,
-                m_indexBuffer, m_indexCount);
+                m_VertexBuffer, m_VertexStride,
+                m_IndexBuffer, m_IndexCount);
         }
     }
 }

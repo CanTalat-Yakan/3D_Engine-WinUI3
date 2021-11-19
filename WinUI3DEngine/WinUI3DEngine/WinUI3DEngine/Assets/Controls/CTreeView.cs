@@ -1,10 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Controls;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WinUI3DEngine.Assets.Controls
 {
@@ -12,7 +9,6 @@ namespace WinUI3DEngine.Assets.Controls
     {
         public string DisplayText { get; set; }
         public string Path { get; set; }
-        public PathDisplay() { }
         public PathDisplay(string d, string p)
         {
             DisplayText = d;

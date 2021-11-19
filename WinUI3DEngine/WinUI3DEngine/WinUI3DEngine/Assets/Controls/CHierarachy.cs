@@ -1,9 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WinUI3DEngine.Assets.Engine.Utilities;
 
 namespace WinUI3DEngine.Assets.Controls
 {
@@ -12,12 +10,13 @@ namespace WinUI3DEngine.Assets.Controls
         public Guid ID;
         public Guid? IDparent;
         public string Name;
-        //public Engine.Utilities.Engine_Object Object;
+        public CObject Object;
         public TreeViewNode Node;
     }
     class CScene
     {
         public List<TreeEntry> m_Hierarchy = new List<TreeEntry>();
+
         public string[] ToStringArray()
         {
             string[] s = new string[m_Hierarchy.Count];
@@ -62,20 +61,20 @@ namespace WinUI3DEngine.Assets.Controls
     {
         CTreeView m_control = new CTreeView();
 
-        internal TreeView m_tree;
-        internal CScene m_scene;
+        internal TreeView m_Tree;
+        internal CScene m_Scene;
 
         public CHierarchy(TreeView _tree, CScene _scene)
         {
-            m_tree = _tree;
-            m_scene = _scene;
+            m_Tree = _tree;
+            m_Scene = _scene;
 
             Initialize();
         }
 
         void Initialize()
         {
-            m_control.PopulateTreeView(m_tree, m_scene.ToStringArray(), '/');
+            m_control.PopulateTreeView(m_Tree, m_Scene.ToStringArray(), '/');
         }
     }
 }

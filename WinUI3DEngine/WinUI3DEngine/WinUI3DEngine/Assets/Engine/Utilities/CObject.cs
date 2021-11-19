@@ -3,33 +3,33 @@ using WinUI3DEngine.Assets.Engine.Components;
 
 namespace WinUI3DEngine.Assets.Engine.Utilities
 {
-    internal class Engine_Object : ICloneable
+    internal class CObject : ICloneable
     {
         internal Guid ID = Guid.NewGuid();
 
-        internal Engine_Object m_parent;
+        internal CObject m_Parent;
 
-        internal CTransform m_transform = new CTransform();
-        internal CMaterial m_material;
-        internal CMesh m_mesh;
+        internal CTransform m_Transform = new CTransform();
+        internal CMaterial m_Material;
+        internal CMesh m_Mesh;
 
-        internal string m_name = "Object";
-        internal bool m_enabled = true;
-        internal bool m_static = false;
+        internal string m_Name = "Object";
+        internal bool m_Enabled = true;
+        internal bool m_Static = false;
 
-        internal Engine_Object Clone() { return (Engine_Object)this.MemberwiseClone(); }
+        internal CObject Clone() { return (CObject)this.MemberwiseClone(); }
         object ICloneable.Clone() { return Clone(); }
 
         internal void Update_Render()
         {
-            if (!m_static)
+            if (!m_Static)
             {
-                if (m_parent != null)
-                    m_transform.m_parent = m_parent.m_transform;
-                m_transform.Udate();
+                if (m_Parent != null)
+                    m_Transform.m_Parent = m_Parent.m_Transform;
+                m_Transform.Udate();
             }
-            m_material.Render(m_transform.m_constantsBuffer);
-            m_mesh.Render();
+            m_Material.Render(m_Transform.m_ConstantsBuffer);
+            m_Mesh.Render();
         }
     }
 }
