@@ -11,6 +11,10 @@
     <controls:DockPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MinWidth="820">
         <!--STATUS -->
         <Grid controls:DockPanel.Dock="Bottom">
+            <Grid.Resources>
+                <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
+            </Grid.Resources>
+
             <CommandBar>
                 <CommandBar.PrimaryCommands>
                     <AppBarToggleButton Name="x_AppBarToggleButton_Status_Play" Icon="Play" Label="Play" Click="AppBarToggleButton_Status_Play_Click"/>
@@ -37,6 +41,10 @@
         </Grid>
 
         <!--MAIN-->
-        <Grid x:Name="x_Grid_Main" Background="{ThemeResource SystemAltMediumLowColor}" HorizontalAlignment="Stretch"/>
+        <Grid x:Name="x_Grid_Main" Background="{ThemeResource SystemAltMediumLowColor}" HorizontalAlignment="Stretch">
+            <Grid.Resources>
+                <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
+            </Grid.Resources>
+        </Grid>
     </controls:DockPanel>
 </Window>
