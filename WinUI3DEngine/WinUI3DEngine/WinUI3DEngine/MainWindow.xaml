@@ -8,7 +8,7 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <controls:DockPanel>
+    <controls:DockPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MinWidth="820">
         <!--STATUS -->
         <Grid controls:DockPanel.Dock="Bottom">
             <CommandBar>

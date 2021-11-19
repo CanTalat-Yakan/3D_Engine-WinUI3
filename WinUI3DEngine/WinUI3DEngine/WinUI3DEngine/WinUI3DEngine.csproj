@@ -10,8 +10,11 @@
     <UseWinUI>true</UseWinUI>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\Controls\CHierarachy.cs" />
     <Content Remove="Assets\Controls\COutput.cs" />
     <Content Remove="Assets\Controls\CPlayer.cs" />
+    <Content Remove="Assets\Controls\CProperties.cs" />
+    <Content Remove="Assets\Controls\CTreeView.cs" />
   </ItemGroup>
 
   <ItemGroup>

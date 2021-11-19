@@ -5,9 +5,131 @@
     xmlns:local="using:WinUI3DEngine.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
     <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <StackPanel x:Name="x_StackPanel_Properties">
+                    <StackPanel Margin="8,4,0,4">
+                        <Grid Margin="0,0,0,4">
+                            <CheckBox IsChecked="True" Margin="0,0,0,-4"/>
+                            <TextBox Text="GameObject" Margin="24,4,4,0"/>
+                        </Grid>
 
+                        <Grid HorizontalAlignment="Stretch" ColumnSpacing="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ComboBox Header="Tag" FontSize="13.5" HorizontalAlignment="Stretch" Grid.Column="0">
+                                <ComboBoxItem Tag="0" Content="Untagged" IsSelected="True"/>
+                                <ComboBoxItem Tag="1" Content="MainCamera"/>
+                                <ComboBoxItem Tag="2" Content="Respawn"/>
+                                <ComboBoxItem Tag="3" Content="Finish"/>
+                                <ComboBoxItem Tag="4" Content="Player"/>
+                                <ComboBoxItem Tag="5" Content="GameController"/>
+                            </ComboBox>
+                            <Button Grid.Column="1" Width="24" Height="24" VerticalAlignment="Bottom">
+                                <Button.Content>
+                                    <TextBlock Text="+" FontSize="28" Margin="-5,-17,-7,-10" Opacity="0.65" HorizontalAlignment="Center"/>
+                                </Button.Content>
+                            </Button>
+                            <ComboBox Header="Layer" FontSize="13.5" HorizontalAlignment="Stretch" Grid.Column="2">
+                                <ComboBoxItem Tag="0" Content="Default" IsSelected="True"/>
+                                <ComboBoxItem Tag="1" Content="Transparent FX"/>
+                                <ComboBoxItem Tag="2" Content="Ignore Raycast"/>
+                                <ComboBoxItem Tag="3" Content="Water"/>
+                                <ComboBoxItem Tag="4" Content="UI"/>
+                            </ComboBox>
+                            <Button Grid.Column="3" Width="24" Height="24" VerticalAlignment="Bottom">
+                                <Button.Content>
+                                    <TextBlock Text="+" FontSize="28" Margin="-5,-17,-7,-10" Opacity="0.65" HorizontalAlignment="Center"/>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+
+                    <NavigationViewItemSeparator/>
+
+                    <!--TRANSFORM-->
+                    <Grid Margin="0,0,0,4">
+                        <muxc:Expander Header="Transform" IsExpanded="True" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+
+                            <!--//Content-->
+                            <StackPanel Spacing="10">
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Position:" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                                            <Rectangle Fill="IndianRed" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Position_X" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                            <Rectangle Fill="SeaGreen" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Position_Y" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                            <Rectangle Fill="DodgerBlue" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Position_Z" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Rotation:" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                                            <Rectangle Fill="IndianRed" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Rotation_X" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                            <Rectangle Fill="SeaGreen" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Rotation_Y" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                            <Rectangle Fill="DodgerBlue" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Rotation_Z" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Scale:" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                                            <Rectangle Fill="IndianRed" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Scale_X" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                            <Rectangle Fill="SeaGreen" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Scale_Y" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                            <Rectangle Fill="DodgerBlue" RadiusX="2" RadiusY="2" Width="4"/>
+                                            <muxc:NumberBox x:Name="x_NumberBox_Scale_Z" Text="0" Width="64" Margin="0,0,4,0"/>
+
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </muxc:Expander>
+                    </Grid>
+                </StackPanel>
+
+                <Button Content="Add Component" Margin="10,10,10,10" HorizontalAlignment="Center">
+                    <Button.Flyout>
+                        <Flyout>
+                            <AutoSuggestBox/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>
