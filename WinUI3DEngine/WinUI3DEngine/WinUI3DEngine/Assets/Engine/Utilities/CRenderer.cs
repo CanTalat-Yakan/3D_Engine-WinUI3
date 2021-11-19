@@ -139,6 +139,18 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
             #endregion
         }
 
+        public void Dispose()
+        {
+            m_device.Dispose();
+            m_deviceContext.Dispose();
+            m_swapChain.Dispose();
+            m_depthStencilView.Dispose();
+            m_depthStencilTexture.Dispose();
+            m_backBufferView.Dispose();
+            m_backBufferTexture.Dispose();
+            m_blendState.Dispose();
+        }
+
         internal void Clear()
         {
             //Clear back buffer with solid color
