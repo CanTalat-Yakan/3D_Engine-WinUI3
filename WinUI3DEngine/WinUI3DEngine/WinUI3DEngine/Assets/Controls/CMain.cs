@@ -10,10 +10,12 @@ namespace WinUI3DEngine.Assets.Controls
 {
     internal class CMain
     {
-        public CMain Singleton { get; private set; }
+        public static CMain Singleton { get; private set; }
 
         internal CLayout m_Layout;
+        internal CPlayer m_Player;
         internal Grid m_Content;
+        internal TextBlock m_Status;
 
         public CMain()
         {

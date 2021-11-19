@@ -32,13 +32,15 @@ namespace WinUI3DEngine
 
             m_mainControl = new CMain();
             m_mainControl.m_Content = x_Grid_Main;
+            m_mainControl.m_Status = x_TextBlock_Status_Content;
             m_mainControl.Initialize();
+            m_mainControl.m_Player = new CPlayer(x_AppBarToggleButton_Status_Play, x_AppBarToggleButton_Status_Pause, x_AppBarButton_Status_Forward);
         }
 
-        private void AppBarToggleButton_Status_Play_Click(object sender, RoutedEventArgs e) { } //m_GameMode.Play(); }
-        private void AppBarToggleButton_Status_Pause_Click(object sender, RoutedEventArgs e) { } //m_GameMode.Pause(); }
-        private void AppBarButton_Status_Forward_Click(object sender, RoutedEventArgs e) { } //m_GameMode.Forward(); }
-        private void AppBarButton_Status_Kill_Click(object sender, RoutedEventArgs e) { } //m_GameMode.Kill(); }
+        private void AppBarToggleButton_Status_Play_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Play(); }
+        private void AppBarToggleButton_Status_Pause_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Pause(); }
+        private void AppBarButton_Status_Forward_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Forward(); }
+        private void AppBarButton_Status_Kill_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Kill(); }
         private void AppBarToggleButton_Status_Light(object sender, RoutedEventArgs e) { } //RequestedTheme = RequestedTheme == ElementTheme.Light ? ElementTheme.Dark : RequestedTheme = ElementTheme.Light; }
 
     }

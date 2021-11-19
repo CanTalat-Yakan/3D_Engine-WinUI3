@@ -20,9 +20,15 @@ namespace WinUI3DEngine.UserControls
 {
     public sealed partial class ViewPort : UserControl
     {
+        internal TextBlock m_DebugProfiling;
+        internal Grid m_BorderBrush;
+
         public ViewPort()
         {
             this.InitializeComponent();
+
+            m_DebugProfiling = x_TextBlock_Debug_FPS;
+            m_BorderBrush = x_Grid_ViewPort_BorderBrush;
         }
 
         void Slider_FOV_ValueChanged(object sender, RangeBaseValueChangedEventArgs e) { }
