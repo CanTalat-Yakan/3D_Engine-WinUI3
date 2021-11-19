@@ -38,7 +38,7 @@ namespace WinUI3DEngine
         private void AppBarToggleButton_Status_Pause_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Pause(); }
         private void AppBarButton_Status_Forward_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Forward(); }
         private void AppBarButton_Status_Kill_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Kill(); }
-        private void AppBarToggleButton_Status_Light(object sender, RoutedEventArgs e) { } //RequestedTheme = RequestedTheme == ElementTheme.Light ? ElementTheme.Dark : RequestedTheme = ElementTheme.Light; }
+        private void AppBarToggleButton_Status_Light(object sender, RoutedEventArgs e) { x_Frame_Main.RequestedTheme = x_Frame_Main.RequestedTheme == ElementTheme.Light ? ElementTheme.Dark : x_Frame_Main.RequestedTheme = ElementTheme.Light; }
 
     }
 }

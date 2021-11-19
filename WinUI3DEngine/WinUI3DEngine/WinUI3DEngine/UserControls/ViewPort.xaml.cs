@@ -33,7 +33,7 @@ namespace WinUI3DEngine.UserControls
             m_DebugProfiling = x_TextBlock_Debug_FPS;
             m_BorderBrush = x_Grid_ViewPort_BorderBrush;
 
-            Loaded += Initialize;
+            //Loaded += Initialize;
         }
 
         void Initialize(object sender, RoutedEventArgs e)
