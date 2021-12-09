@@ -192,26 +192,24 @@ namespace UWP3DEngine.Assets.Engine.Utilities
 
             e.Handled = true;
         }
-        internal void PointerReleased(object sender, PointerRoutedEventArgs e)
+        internal void PointerReleased(CoreWindow sender, PointerEventArgs e)
         {
-            if (e.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
-            {
-                m_pointer = e.GetCurrentPoint(null);
+            m_pointer = e.CurrentPoint;
 
-                var newBool = new bool[3];
-                newBool[(int)EInputState.DOWN] = false;
-                newBool[(int)EInputState.PRESSED] = false;
-                newBool[(int)EInputState.UP] = true;
+            var newBool = new bool[3];
+            newBool[(int)EInputState.DOWN] = false;
+            newBool[(int)EInputState.PRESSED] = false;
+            newBool[(int)EInputState.UP] = true;
 
-                if (!m_pointer.Properties.IsLeftButtonPressed)
-                    SetPointerDic(EMouseButton.IsLeftButtonPressed, newBool);
+            if (!m_pointer.Properties.IsLeftButtonPressed)
+                SetPointerDic(EMouseButton.IsLeftButtonPressed, newBool);
 
-                if (!m_pointer.Properties.IsMiddleButtonPressed)
-                    SetPointerDic(EMouseButton.IsMiddleButtonPressed, newBool);
+            if (!m_pointer.Properties.IsMiddleButtonPressed)
+                SetPointerDic(EMouseButton.IsMiddleButtonPressed, newBool);
 
-                if (!m_pointer.Properties.IsRightButtonPressed)
-                    SetPointerDic(EMouseButton.IsRightButtonPressed, newBool);
-            }
+            if (!m_pointer.Properties.IsRightButtonPressed)
+                SetPointerDic(EMouseButton.IsRightButtonPressed, newBool);
+
             e.Handled = true;
         }
         internal void PointerWheelChanged(object sender, PointerRoutedEventArgs e)
@@ -226,14 +224,10 @@ namespace UWP3DEngine.Assets.Engine.Utilities
             e.Handled = true;
         }
 
-        internal void PointerMoved(object sender, PointerRoutedEventArgs e)
+        internal void PointerMoved(CoreWindow sender, PointerEventArgs e)
         {
-            if (e.Pointer.PointerDeviceType == PointerDeviceType.Mouse)
-            {
-                m_pointer = e.GetCurrentPoint(null);
-
-                m_pointerPosition = m_pointer.Position;
-            }
+            m_pointer = e.CurrentPoint;
+            m_pointerPosition = m_pointer.Position;
 
             e.Handled = true;
         }
