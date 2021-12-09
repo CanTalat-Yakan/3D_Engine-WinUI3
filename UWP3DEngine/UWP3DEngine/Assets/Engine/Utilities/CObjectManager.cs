@@ -39,7 +39,7 @@ namespace UWP3DEngine.Assets.Engine.Utilities
         static readonly string SHADER_SIMPLELIT = @"Assets//Engine//Resources//Shader//SimpleLit.hlsl";
         static readonly string SHADER_UNLIT = @"Assets//Engine//Resources//Shader//Unlit.hlsl";
         static readonly string IMAGE_DEFAULT = @"Assets//Engine//Resources//Textures//Default.png";
-        static readonly string IMAGE_SKY = @"Assets//Engine//Resources//Texture//SkyGradient.png";
+        static readonly string IMAGE_SKY = @"Assets//Engine//Resources//Textures//Sky3.jpg";
         static readonly string OBJ_CUBE = @"Assets//Engine//Resources//Models//Cube.obj";
         static readonly string OBJ_SPHERE = @"Assets//Engine//Resources//Models//Sphere.obj";
 
