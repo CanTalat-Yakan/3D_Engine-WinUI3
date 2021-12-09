@@ -17,8 +17,6 @@ struct appdata
     float3 normal : NORMAL;
 };
 
-Texture2D ObjTexture : register(t0);
-SamplerState ObjSamplerState : register(s0);
 
 struct VS_OUTPUT
 {
@@ -29,6 +27,8 @@ struct VS_OUTPUT
     float3 normal : NORMAL;
 };
 
+Texture2D ObjTexture : register(t0);
+SamplerState ObjSamplerState : register(s0);
 
 VS_OUTPUT VS(appdata v)
 {
