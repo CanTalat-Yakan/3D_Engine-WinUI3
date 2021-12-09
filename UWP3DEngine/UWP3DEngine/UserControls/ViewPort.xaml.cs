@@ -29,8 +29,8 @@ namespace UWP3DEngine.UserControls
 
             PointerPressed += m_Engine.m_Input.PointerPressed;
             PointerWheelChanged += m_Engine.m_Input.PointerWheelChanged;
-            PointerReleased += m_Engine.m_Input.PointerReleased;
-            PointerMoved += m_Engine.m_Input.PointerMoved;
+            Window.Current.CoreWindow.PointerReleased += m_Engine.m_Input.PointerReleased;
+            Window.Current.CoreWindow.PointerMoved += m_Engine.m_Input.PointerMoved;
             Window.Current.CoreWindow.KeyDown += m_Engine.m_Input.KeyDown;
             Window.Current.CoreWindow.KeyUp += m_Engine.m_Input.KeyUp;
             //Window.Current.CoreWindow.GetKeyState(Windows.System.VirtualKey.Control).HasFlag(CoreVirtualKeyStates.Down);
