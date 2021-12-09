@@ -283,7 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AssimpNet">
-      <Version>5.0.0-beta1</Version>
+      <Version>4.1.0</Version>
     </PackageReference>
     <PackageReference Include="ImGui.NET.DirectX">
       <Version>1.75.1</Version>
@@ -322,7 +322,6 @@
     <Content Include="Assets\Engine\Resources\Models\Mandalorian.fbx" />
     <Content Include="Assets\Engine\Resources\Models\SmallSphere.obj" />
     <Content Include="Assets\Engine\Resources\Models\Sphere.obj" />
-    <Content Include="Assets\Engine\Resources\Textures\Sky4k.hdr" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
