@@ -32,6 +32,8 @@ namespace WinUI3DEngine
 
             m_mainControl = new CMain(x_Grid_Main, x_TextBlock_Status_Content);
             m_mainControl.m_Player = new CPlayer(x_AppBarToggleButton_Status_Play, x_AppBarToggleButton_Status_Pause, x_AppBarButton_Status_Forward);
+            string s = File.ReadAllText(@"F://Desktop//txt.txt");
+            _ = s;
         }
 
         private void AppBarToggleButton_Status_Play_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Play(); }
