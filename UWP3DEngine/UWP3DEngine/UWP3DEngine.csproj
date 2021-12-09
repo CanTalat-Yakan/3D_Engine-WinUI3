@@ -315,14 +315,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Assets\Engine\Resources\Models\Cube.obj" />
-    <None Include="Assets\Engine\Resources\Models\CubeRig.fbx" />
-    <None Include="Assets\Engine\Resources\Models\Cylinder.obj" />
-    <None Include="Assets\Engine\Resources\Models\Duck.obj" />
-    <None Include="Assets\Engine\Resources\Models\Mandalorian.fbx" />
-    <None Include="Assets\Engine\Resources\Models\SmallSphere.obj" />
-    <None Include="Assets\Engine\Resources\Models\Sphere.obj" />
-    <None Include="Assets\Engine\Resources\Textures\Sky4k.hdr" />
+    <Content Include="Assets\Engine\Resources\Models\Cube.obj" />
+    <Content Include="Assets\Engine\Resources\Models\CubeRig.fbx" />
+    <Content Include="Assets\Engine\Resources\Models\Cylinder.obj" />
+    <Content Include="Assets\Engine\Resources\Models\Duck.obj" />
+    <Content Include="Assets\Engine\Resources\Models\Mandalorian.fbx" />
+    <Content Include="Assets\Engine\Resources\Models\SmallSphere.obj" />
+    <Content Include="Assets\Engine\Resources\Models\Sphere.obj" />
+    <Content Include="Assets\Engine\Resources\Textures\Sky4k.hdr" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -68,8 +68,8 @@ namespace UWP3DEngine.Assets.Engine.Components
             #endregion
 
             #region //Create Texture and Sampler
-            var texture = CImgLoader.CreateTexture2DFromBitmap(m_d3d.m_Device, CImgLoader.LoadBitmap(new SharpDX.WIC.ImagingFactory2(), _imageFileName));
-            m_resourceView = new D3D11.ShaderResourceView(m_d3d.m_Device, texture);
+            //var texture = CImgLoader.CreateTexture2DFromBitmap(m_d3d.m_Device, CImgLoader.LoadBitmap(new SharpDX.WIC.ImagingFactory2(), _imageFileName));
+            //m_resourceView = new D3D11.ShaderResourceView(m_d3d.m_Device, texture);
 
             D3D11.SamplerStateDescription samplerStateDescription = new D3D11.SamplerStateDescription
             {
@@ -97,7 +97,7 @@ namespace UWP3DEngine.Assets.Engine.Components
             m_d3d.m_DeviceContext.UpdateSubresource(ref _data, m_model);
             m_d3d.m_DeviceContext.VertexShader.SetConstantBuffer(1, m_model);
 
-            m_d3d.m_DeviceContext.PixelShader.SetShaderResource(0, m_resourceView);
+            //m_d3d.m_DeviceContext.PixelShader.SetShaderResource(0, m_resourceView);
             m_d3d.m_DeviceContext.PixelShader.SetSampler(0, m_sampler);
         }
     }
