@@ -34,7 +34,7 @@ namespace WinUI3DEngine.UserControls
 
         void Initialize0(object sender, RoutedEventArgs e)
         {
-            CMain.Singleton.m_Layout.m_ViewPort.Loaded += Initialize;
+            //CMain.Singleton.m_Layout.m_ViewPort.Loaded += Initialize;
         }
 
         void Initialize(object sender, RoutedEventArgs e)

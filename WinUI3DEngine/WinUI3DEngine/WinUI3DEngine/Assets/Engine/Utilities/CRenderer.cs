@@ -26,7 +26,6 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
         D3D11.DepthStencilView m_depthStencilView;
         D3D11.BlendState m_blendState;
 
-
         internal CRenderer(SwapChainPanel _swapChainPanel)
         {
             #region //Create Instance
@@ -69,7 +68,7 @@ namespace WinUI3DEngine.Assets.Engine.Utilities
                         m_SwapChain = swapChain1.QueryInterface<DXGI.SwapChain2>();
 
             // Obtain a reference to the native COM object of the SwapChainPanel.
-            using (var nativeObject = ComObject.As<DXGI.ISwapChainPanelNative>(m_SwapChainPanel))
+            using (var nativeObject = ComObject.As<DXGI.ISwapChainPanelNative2>(m_SwapChainPanel))
                 nativeObject.SwapChain = m_SwapChain;
             #endregion
 

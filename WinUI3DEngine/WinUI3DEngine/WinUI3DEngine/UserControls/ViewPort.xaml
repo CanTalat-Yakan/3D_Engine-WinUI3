@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid x:Name="x_Grid_ViewPort_BorderBrush">
-            <SwapChainPanel x:Name="x_SwapChainPanel_ViewPort"/>
+            <muxc:SwapChainPanel x:Name="x_SwapChainPanel_ViewPort"/>
         </Grid>
 
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Spacing="6" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20">
