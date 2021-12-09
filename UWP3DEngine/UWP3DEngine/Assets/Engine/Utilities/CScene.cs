@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using WinUI3DEngine.Assets.Engine.Components;
-using WinUI3DEngine.Assets.Engine.Editor;
+using UWP3DEngine.Assets.Engine.Components;
+using UWP3DEngine.Assets.Engine.Editor;
 using Vector2 = SharpDX.Vector2;
 using Vector3 = SharpDX.Vector3;
 
-namespace WinUI3DEngine.Assets.Engine.Utilities
+namespace UWP3DEngine.Assets.Engine.Utilities
 {
     internal class CScene
     {

@@ -1,7 +1,7 @@
 ﻿using SharpDX;
-using WinUI3DEngine.Assets.Engine.Data;
+using UWP3DEngine.Assets.Engine.Data;
 
-namespace WinUI3DEngine.Assets.Engine.Components
+namespace UWP3DEngine.Assets.Engine.Components
 {
     internal class CTransform
     {

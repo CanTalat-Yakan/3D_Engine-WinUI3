@@ -1,7 +1,7 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using WinUI3DEngine.UserControls;
+﻿using UWP3DEngine.UserControls;
+using Windows.UI.Xaml.Controls;
 
-namespace WinUI3DEngine.Assets.Controls
+namespace UWP3DEngine.Assets.Controls
 {
     internal class CMain
     {

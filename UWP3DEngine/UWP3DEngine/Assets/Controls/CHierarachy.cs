@@ -1,9 +1,10 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using WinUI3DEngine.Assets.Engine.Utilities;
+using UWP3DEngine.Assets.Engine.Utilities;
+using UWP3DEngine.UserControls;
 
-namespace WinUI3DEngine.Assets.Controls
+namespace UWP3DEngine.Assets.Controls
 {
     class TreeEntry
     {
@@ -13,7 +14,7 @@ namespace WinUI3DEngine.Assets.Controls
         public CObject Object;
         public TreeViewNode Node;
     }
-    class CScene
+    class TreeEntryCollection
     {
         public List<TreeEntry> m_Hierarchy = new List<TreeEntry>();
 
@@ -27,23 +28,6 @@ namespace WinUI3DEngine.Assets.Controls
             return s;
         }
 
-        public TreeEntry GetParent(TreeEntry _node)
-        {
-            if (_node.IDparent != null)
-                foreach (var item in m_Hierarchy)
-                    if (item.ID == _node.IDparent.Value)
-                        return item;
-            return null;
-        }
-        public TreeEntry[] GetChildren(TreeEntry _node)
-        {
-            List<TreeEntry> list = new List<TreeEntry>();
-            foreach (var item in m_Hierarchy)
-                if (item.IDparent != null)
-                    if (item.IDparent.Value == _node.ID)
-                        list.Add(item);
-            return list.ToArray();
-        }
         string GetParents(TreeEntry _current, string _path, char _pathSeperator)
         {
             if (_current.IDparent != null)
@@ -59,22 +43,68 @@ namespace WinUI3DEngine.Assets.Controls
     }
     class CHierarchy
     {
-        CTreeView m_control = new CTreeView();
+        internal TreeView m_tree;
+        internal TreeEntryCollection m_collection;
+        internal MyList<CObject> m_engineObjectsList;
 
-        internal TreeView m_Tree;
-        internal CScene m_Scene;
-
-        public CHierarchy(TreeView _tree, CScene _scene)
+        public CHierarchy(TreeView _tree)
         {
-            m_Tree = _tree;
-            m_Scene = _scene;
+            m_tree = _tree;
+
+            m_engineObjectsList = CMain.Singleton.m_Layout.m_ViewPort.m_Engine.m_Scene.m_ObjectManager.m_List;
+            m_engineObjectsList.OnAdd += (object sender, EventArgs e) =>
+            {
+                m_tree.RootNodes.Clear();
+                Initialize();
+            };
 
             Initialize();
+
+            m_tree.ItemInvoked += (TreeView sender, TreeViewItemInvokedEventArgs e) =>
+            {
+                COutput.Log(e.InvokedItem.ToString());
+                CMain.Singleton.m_Layout.m_PropertiesHolder.Children.Clear();
+                CMain.Singleton.m_Layout.m_PropertiesHolder.Children.Add(new Properties());
+            };
         }
 
         void Initialize()
         {
-            m_control.PopulateTreeView(m_Tree, m_Scene.ToStringArray(), '/');
+            m_collection = new TreeEntryCollection();
+            foreach (var item in m_engineObjectsList)
+                m_collection.m_Hierarchy.Add(
+                    new TreeEntry()
+                    {
+                        Object = item,
+                        Name = item.m_Name,
+                        ID = item.ID,
+                        Node = new TreeViewNode()
+                        {
+                            Content = item.m_Name,
+                            IsExpanded = true,
+                        }
+                    });
+
+            foreach (var entry in m_collection.m_Hierarchy)
+                if (entry.Object.m_Parent != null)
+                    entry.IDparent = entry.Object.m_Parent.ID;
+
+            List<TreeViewNode> hierarchy = new List<TreeViewNode>();
+            foreach (var entry in m_collection.m_Hierarchy)
+                if (entry.IDparent is null)
+                    hierarchy.Add(RecursiveGetChildren(m_collection, entry).Node);
+
+            foreach (var entry in hierarchy)
+                m_tree.RootNodes.Add(entry);
+        }
+
+        TreeEntry RecursiveGetChildren(TreeEntryCollection _collection, TreeEntry _input)
+        {
+            foreach (var item in _collection.m_Hierarchy)
+                if (item.IDparent == _input.ID)
+                    _input.Node.Children.Add(RecursiveGetChildren(_collection, item).Node);
+
+            return _input;
         }
     }
 }

@@ -3,7 +3,7 @@ using Vector2 = SharpDX.Vector2;
 using Vector3 = SharpDX.Vector3;
 using Vector4 = SharpDX.Vector4;
 
-namespace WinUI3DEngine.Assets.Engine.Data
+namespace UWP3DEngine.Assets.Engine.Data
 {
     public struct SViewConstantsBuffer
     {

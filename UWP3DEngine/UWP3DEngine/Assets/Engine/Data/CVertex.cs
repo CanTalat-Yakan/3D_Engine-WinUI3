@@ -1,7 +1,7 @@
 ﻿using Vector2 = SharpDX.Vector2;
 using Vector3 = SharpDX.Vector3;
 
-namespace WinUI3DEngine.Assets.Engine.Data
+namespace UWP3DEngine.Assets.Engine.Data
 {
     struct CVertex
     {

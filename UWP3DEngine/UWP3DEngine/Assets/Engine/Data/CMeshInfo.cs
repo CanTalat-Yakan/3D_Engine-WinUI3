@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WinUI3DEngine.Assets.Engine.Data
+namespace UWP3DEngine.Assets.Engine.Data
 {
     struct CMeshInfo
     {

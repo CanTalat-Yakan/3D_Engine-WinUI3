@@ -1,9 +1,9 @@
 ﻿using ImGuiNET;
 using System;
 using System.Numerics;
-using WinUI3DEngine.Assets.Engine.Utilities;
+using UWP3DEngine.Assets.Engine.Utilities;
 
-namespace WinUI3DEngine.Assets.Engine.Editor
+namespace UWP3DEngine.Assets.Engine.Editor
 {
     internal class CImGui
     {

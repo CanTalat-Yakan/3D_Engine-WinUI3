@@ -1,10 +1,10 @@
 ﻿using System;
 using Windows.System;
-using WinUI3DEngine.Assets.Engine.Components;
-using WinUI3DEngine.Assets.Engine.Utilities;
+using UWP3DEngine.Assets.Engine.Components;
+using UWP3DEngine.Assets.Engine.Utilities;
 using Vector3 = SharpDX.Vector3;
 
-namespace WinUI3DEngine.Assets.Engine.Editor
+namespace UWP3DEngine.Assets.Engine.Editor
 {
     internal class CController
     {

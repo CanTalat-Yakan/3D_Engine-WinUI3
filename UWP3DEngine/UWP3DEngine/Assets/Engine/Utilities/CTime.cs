@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace WinUI3DEngine.Assets.Engine.Utilities
+namespace UWP3DEngine.Assets.Engine.Utilities
 {
     internal class CTime
     {

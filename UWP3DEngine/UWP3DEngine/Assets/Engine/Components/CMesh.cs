@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using WinUI3DEngine.Assets.Engine.Data;
-using WinUI3DEngine.Assets.Engine.Utilities;
+using UWP3DEngine.Assets.Engine.Data;
+using UWP3DEngine.Assets.Engine.Utilities;
 using D3D11 = SharpDX.Direct3D11;
 
-namespace WinUI3DEngine.Assets.Engine.Components
+namespace UWP3DEngine.Assets.Engine.Components
 {
     internal class CMesh
     {

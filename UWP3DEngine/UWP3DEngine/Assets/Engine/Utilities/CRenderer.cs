@@ -1,12 +1,12 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using SharpDX;
+﻿using SharpDX;
 using SharpDX.Mathematics.Interop;
 using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using D3D11 = SharpDX.Direct3D11;
 using DXGI = SharpDX.DXGI;
 
-namespace WinUI3DEngine.Assets.Engine.Utilities
+namespace UWP3DEngine.Assets.Engine.Utilities
 {
     internal class CRenderer
     {

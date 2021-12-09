@@ -2,7 +2,7 @@
 using WIC = SharpDX.WIC;
 using DXGI = SharpDX.DXGI;
 
-namespace WinUI3DEngine.Assets.Engine.Helper
+namespace UWP3DEngine.Assets.Engine.Helper
 {
     internal class CImgLoader
     {

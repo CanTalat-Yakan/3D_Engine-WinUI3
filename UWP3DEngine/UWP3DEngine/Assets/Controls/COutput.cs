@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.WinUI.UI.Controls;
-using Microsoft.UI;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
+﻿using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,8 +6,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.Storage;
 using Windows.System;
+using Windows.UI;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
-namespace WinUI3DEngine.Assets.Controls
+namespace UWP3DEngine.Assets.Controls
 {
     internal enum EMessageType
     {

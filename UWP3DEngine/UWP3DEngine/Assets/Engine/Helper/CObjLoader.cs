@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WinUI3DEngine.Assets.Engine.Data;
+using UWP3DEngine.Assets.Engine.Data;
 
-namespace WinUI3DEngine.Assets.Engine.Helper
+namespace UWP3DEngine.Assets.Engine.Helper
 {
     internal class CObjLoader
     {

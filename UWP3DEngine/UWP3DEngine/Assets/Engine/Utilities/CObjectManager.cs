@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using WinUI3DEngine.Assets.Engine.Components;
-using WinUI3DEngine.Assets.Engine.Helper;
+using UWP3DEngine.Assets.Engine.Components;
+using UWP3DEngine.Assets.Engine.Helper;
 using Vector3 = SharpDX.Vector3;
 
-namespace WinUI3DEngine.Assets.Engine.Utilities
+namespace UWP3DEngine.Assets.Engine.Utilities
 {
     public enum EPrimitiveTypes
     {

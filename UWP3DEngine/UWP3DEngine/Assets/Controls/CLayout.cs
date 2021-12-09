@@ -1,11 +1,11 @@
-﻿using CommunityToolkit.WinUI.UI.Controls;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Data;
+﻿using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
-using WinUI3DEngine.UserControls;
+using UWP3DEngine.UserControls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 
-namespace WinUI3DEngine.Assets.Controls
+namespace UWP3DEngine.Assets.Controls
 {
     class GridDataTemeplate
     {
@@ -25,6 +25,7 @@ namespace WinUI3DEngine.Assets.Controls
         internal Output m_Output;
         internal Files m_Files;
         internal Settings m_Settings;
+        internal Grid m_PropertiesHolder;
 
         public CLayout(Grid _content, ViewPort _viewPort, Hierarchy _hierarchy, Properties _properties, Output _output, Files _files, Settings _settings)
         {
@@ -44,7 +45,7 @@ namespace WinUI3DEngine.Assets.Controls
                 WrapInTabView(new TabViewItemDataTemplate() { Header = "Output", Content = m_Output, Symbol = Symbol.Message },
                     new TabViewItemDataTemplate() { Header = "Files", Content = m_Files, Symbol = Symbol.Document }),
                 WrapGrid(m_Hierarchy),
-                WrapGrid(m_Properties));
+                WrapGrid(m_PropertiesHolder = new Grid()));
 
             m_Main.Children.Add(m_GridContent);
         }

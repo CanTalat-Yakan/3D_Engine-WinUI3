@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+using UWP3DEngine.Assets.Controls;
 
 namespace UWP3DEngine
 {
@@ -22,9 +9,20 @@ namespace UWP3DEngine
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        CMain m_mainControl;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            m_mainControl = new CMain(x_Grid_Main, x_TextBlock_Status_Content);
+            m_mainControl.m_Player = new CPlayer(x_AppBarToggleButton_Status_Play, x_AppBarToggleButton_Status_Pause, x_AppBarButton_Status_Forward);
         }
+
+        private void AppBarToggleButton_Status_Play_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Play(); }
+        private void AppBarToggleButton_Status_Pause_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Pause(); }
+        private void AppBarButton_Status_Forward_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Forward(); }
+        private void AppBarButton_Status_Kill_Click(object sender, RoutedEventArgs e) { m_mainControl.m_Player.Kill(); }
+        private void AppBarToggleButton_Status_Light(object sender, RoutedEventArgs e) { x_Frame_Main.RequestedTheme = x_Frame_Main.RequestedTheme == ElementTheme.Light ? ElementTheme.Dark : x_Frame_Main.RequestedTheme = ElementTheme.Light; }
     }
 }

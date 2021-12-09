@@ -1,9 +1,9 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
-using WinUI3DEngine.Assets.Engine.Editor;
-using WinUI3DEngine.Assets.Engine.Utilities;
+﻿using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using UWP3DEngine.Assets.Engine.Editor;
+using UWP3DEngine.Assets.Engine.Utilities;
 
-namespace WinUI3DEngine.Assets.Engine
+namespace UWP3DEngine.Assets.Engine
 {
     internal class CEngine
     {

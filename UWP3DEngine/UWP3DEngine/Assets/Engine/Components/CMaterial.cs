@@ -1,11 +1,11 @@
 ﻿using SharpDX.D3DCompiler;
-using WinUI3DEngine.Assets.Engine.Data;
-using WinUI3DEngine.Assets.Engine.Helper;
-using WinUI3DEngine.Assets.Engine.Utilities;
+using UWP3DEngine.Assets.Engine.Data;
+using UWP3DEngine.Assets.Engine.Helper;
+using UWP3DEngine.Assets.Engine.Utilities;
 using D3D11 = SharpDX.Direct3D11;
 using DXGI = SharpDX.DXGI;
 
-namespace WinUI3DEngine.Assets.Engine.Components
+namespace UWP3DEngine.Assets.Engine.Components
 {
     internal class CMaterial
     {
